@@ -23,7 +23,7 @@ var custom_messages = [
         responses: [":yee-haw-dietrich:", ":yeehaw:", "YEE HAW"]
     }, {
         triggers: ["when"],
-        responses: ["never", "In 10 days", "idk", "why do you always ask so much of me"]
+        responses: ["never", "In 10 days", "in 2 hours", "soon", "probably never", "idk", "why do you always ask so much of me"]
     }, {
         triggers: ["bee me"],
         responses: ["Ya like jazz?", "According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible."]
@@ -46,8 +46,8 @@ var custom_messages = [
         triggers: ["help"],
         responses: ["the greatest help comes from within"]
     }, {
-        triggers: [],
-        responses: []
+        triggers: ["where should we eat"],
+        responses: [":panda-express:", ":saffron:", ":carls-jr:", ":taco-bell:", ":mcdonalds:", ":kfc:", ":wendys:", ":arbys:", ":soylent:", "grand central market", "mendocino", "Tarbooshla"]
     }, {
         triggers: [],
         responses: []
