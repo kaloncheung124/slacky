@@ -34,7 +34,7 @@ function buildResponse(req, res, next) {
     // Otherwise, search for valid response
     var reqMessage = body.text.toLowerCase();
     var lowestSubstringIndex = Number.POSITIVE_INFINITY;
-    var longestTrigerLenth = Number.NEGATIVE_INFINITY;
+    var longestTriggerLength = Number.NEGATIVE_INFINITY;
     var bestResponse;
     req.shouldPost = false;
     
@@ -54,10 +54,10 @@ function buildResponse(req, res, next) {
             var triggerLength = trigger.length;
             
             // If this trigger's index is lower, or it's the same and the trigger string length is greater, choose this response index.
-            if (substringIndex < lowestSubstringIndex || (substringIndex === lowestSubStringIndex && triggerLength > longestTrigerLength)) {
+            if (substringIndex < lowestSubstringIndex || (substringIndex === lowestSubstringIndex && triggerLength > longestTriggerLength)) {
                     
                 lowestSubstringIndex = substringIndex;
-                longestTriggerLenth = triggerLength;
+                longestTriggerLength = triggerLength;
                 bestResponse = i;
                 req.shouldPost = true;
             }
