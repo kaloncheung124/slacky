@@ -27,7 +27,7 @@ function buildResponse(req, res, next) {
     
     // If it's not in the correct channel, don't reply
     if (body.channel_id !== app_channel_id) {
-        next("Slacky doesn't work on this channel.");
+        next("Slacky doesn't work here.");
         return;
     }
     
@@ -74,6 +74,7 @@ function buildResponse(req, res, next) {
 
 function confirmOK(req, res) {
     if (req.shouldPost) {
+        console.log("Responding with:", req.slackPost);
         res.status(200).json({
             "response_type": "in_channel",
             "text": req.slackPost
