@@ -5,7 +5,7 @@ var Axios = require('axios');
 var customResponses = require('./responses');
 
 const PORT = process.env.PORT || 3000;
-const app_channel_id = 'G5U4QADM5';
+const app_channel_ids = ['G5U4QADM5', 'D5ZRKBF0U'];
 const app_command = '/slacky';
 const app_token = 'Laxhh7SiOEDj2UK049nShPLK';
 
@@ -26,7 +26,7 @@ function buildResponse(req, res, next) {
     }
     
     // If it's not in the correct channel, don't reply
-    if (body.channel_id !== app_channel_id) {
+    if (app_channel_ids.indexOf(body.channel_id) === -1) {
         next("Slacky doesn't work here.");
         return;
     }
@@ -74,7 +74,7 @@ function buildResponse(req, res, next) {
 
 function confirmOK(req, res) {
     if (req.shouldPost) {
-        console.log("Responding with:", req.slackPost);
+        console.log("Response:", req.slackPost);
         res.status(200).json({
             "response_type": "in_channel",
             "text": req.slackPost
