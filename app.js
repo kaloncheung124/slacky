@@ -5,9 +5,12 @@ var Axios = require('axios');
 var customResponses = require('./responses');
 
 const PORT = process.env.PORT || 3000;
-const app_channel_ids = ['G5U4QADM5', 'D5ZRKBF0U'];
+const app_channel_ids = ['G5U4QADM5', 'D5ZRKBF0U', 'D1B41UMTP', 'D7XBVJ11S'];
 const app_command = '/slacky';
 const app_token = 'Laxhh7SiOEDj2UK049nShPLK';
+
+// Responses that need special attention
+const specialResponses = ["BITCOIN_LOOKUP", "LOVE_BACK"];
 
 // Setup bodyparser middleware
 app.use(bodyParser.urlencoded({extended: true}));
@@ -69,7 +72,29 @@ function buildResponse(req, res, next) {
         var validResponses = customResponses[bestResponse].responses;
         req.slackPost = validResponses[Math.floor(Math.random()*validResponses.length)];
     }
-    next();
+    
+    if (specialResponses.indexOf(req.slackPost) !== -1) {
+        return specialResponse(req, next);
+    } else {
+        next();
+    }
+}
+
+// Must call next!
+function specialResponse(req, next) {
+    switch (req.slackPost) {
+        case "BITCOIN_LOOKUP":
+            return Axios.get("https://api.coindesk.com/v1/bpi/currentprice.json")
+                .then(function(response) {
+                    req.slackPost = "*1 BTC = " + response.data.bpi.USD.rate + " USD* as of " + response.data.time.updated;
+                    next();
+                })
+        case "LOVE_BACK":
+            req.slackPost = `I love you too, <@${req.body.user_id}>`;
+            return next();
+        default:
+            return next();
+    }
 }
 
 function confirmOK(req, res) {
@@ -77,9 +102,11 @@ function confirmOK(req, res) {
         console.log("Response:", req.slackPost);
         res.status(200).json({
             "response_type": "in_channel",
+            "link_names": 1,
             "text": req.slackPost
         });
     } else {
+        console.log("No response found.")
         res.status(200).send("No :fire: response found.");
     }
 }
