@@ -38,6 +38,9 @@ var custom_messages = [
         triggers: ["is", "are", "does", "do", "will", "should", "could", "am", "would", "did", "were", "can"],
         responses: [":no_good: :no_entry_sign: no :no_good: :no_entry_sign:", ":the_horns::dancing-party: yes:the_horns::dancing-party:"]
     }, {
+        triggers: ['do you like'],
+        responses: [':heart', ':dislike']
+    }, {
         triggers: ['issa knife'],
         responses: [':knife:']
     }, {
