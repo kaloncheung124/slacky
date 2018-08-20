@@ -39,7 +39,7 @@ var custom_messages = [
         responses: [":no_good: :no_entry_sign: no :no_good: :no_entry_sign:", ":the_horns::dancing-party: yes:the_horns::dancing-party:"]
     }, {
         triggers: ['do you like'],
-        responses: [':heart', ':dislike']
+        responses: [':heart:', ':dislike:']
     }, {
         triggers: ['issa knife'],
         responses: [':knife:']
