@@ -119,9 +119,21 @@ var custom_messages = [
         triggers: ["i love you"],
         responses: ["LOVE_BACK"]
     }, {
+        triggers: ["issa dietrich"],
+        responses: [":dietrich:"]
+    }, {
         triggers: [],
         responses: []
-    },
+    }, {
+        triggers: [],
+        responses: []
+    }, {
+        triggers: [],
+        responses: []
+    }, {
+        triggers: [],
+        responses: []
+    }, 
 ];
 
 module.exports = custom_messages;
