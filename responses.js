@@ -120,7 +120,7 @@ var custom_messages = [
         responses: ["LOVE_BACK"]
     }, {
         triggers: ["issa dietrich"],
-        responses: [":dietrich:"]
+        responses: [":dietrich:", ":yee-haw-dietrich:"]
     }, {
         triggers: [],
         responses: []
