@@ -1,16 +1,13 @@
 const express = require('express');
 const app = express();
-var bodyParser = require('body-parser');
-var Axios = require('axios');
-var customResponses = require('./responses');
+const bodyParser = require('body-parser');
+const customResponses = require('./responses');
+const { specialResponses, respondSpecially } = require('./specialResponses');
 
 const PORT = process.env.PORT || 3000;
 const app_channel_ids = ['G5U4QADM5', 'D5ZRKBF0U', 'D1B41UMTP', 'D7XBVJ11S'];
 const app_command = '/slacky';
 const app_token = 'Laxhh7SiOEDj2UK049nShPLK';
-
-// Responses that need special attention
-const specialResponses = ["BITCOIN_LOOKUP", "LOVE_BACK"];
 
 // Setup bodyparser middleware
 app.use(bodyParser.urlencoded({extended: true}));
@@ -20,7 +17,7 @@ app.use(bodyParser.json());
 
 function buildResponse(req, res, next) {
     console.log(req.body);
-    var body = req.body;
+    let body = req.body;
     
     // Ensure correct command and slack team invoked this.
     if (body.command !== app_command || body.token !== app_token) {
@@ -35,26 +32,24 @@ function buildResponse(req, res, next) {
     }
     
     // Otherwise, search for valid response
-    var reqMessage = body.text.toLowerCase();
-    var lowestSubstringIndex = Number.POSITIVE_INFINITY;
-    var longestTriggerLength = Number.NEGATIVE_INFINITY;
-    var bestResponse;
+    let reqMessage = body.text.toLowerCase();
+    let lowestSubstringIndex = Number.POSITIVE_INFINITY;
+    let longestTriggerLength = Number.NEGATIVE_INFINITY;
+    let bestResponse;
     req.shouldPost = false;
     
-
-    
     // Using the explicit for loops for performance, iterate through each trigger of each customResponse
-    for (var i = 0; i < customResponses.length; i++) {
-        var triggers = customResponses[i].triggers;
+    for (let i = 0; i < customResponses.length; i++) {
+        let triggers = customResponses[i].triggers;
         
-        for (var j = 0; j < triggers.length; j++) {
-            var trigger = triggers[j];
+        for (let j = 0; j < triggers.length; j++) {
+            let trigger = triggers[j];
             
             // If trigger not in message, continue to next trigger.
-            var substringIndex = reqMessage.indexOf(trigger);
+            let substringIndex = reqMessage.indexOf(trigger);
             if (substringIndex === -1) continue;
             
-            var triggerLength = trigger.length;
+            let triggerLength = trigger.length;
             
             // If this trigger's index is lower, or it's the same and the trigger string length is greater, choose this response index.
             if (substringIndex < lowestSubstringIndex || (substringIndex === lowestSubstringIndex && triggerLength > longestTriggerLength)) {
@@ -69,31 +64,14 @@ function buildResponse(req, res, next) {
     
     // If valid response, pick a random response
     if (req.shouldPost) {
-        var validResponses = customResponses[bestResponse].responses;
+        let validResponses = customResponses[bestResponse].responses;
         req.slackPost = validResponses[Math.floor(Math.random()*validResponses.length)];
     }
     
-    if (specialResponses.indexOf(req.slackPost) !== -1) {
-        return specialResponse(req, next);
+    if (specialResponses.keys.includes.indexOf(req.slackPost) !== -1) {
+        return respondSpecially(req, reqMessage, next);
     } else {
         next();
-    }
-}
-
-// Must call next!
-function specialResponse(req, next) {
-    switch (req.slackPost) {
-        case "BITCOIN_LOOKUP":
-            return Axios.get("https://api.coindesk.com/v1/bpi/currentprice.json")
-                .then(function(response) {
-                    req.slackPost = "*1 BTC = " + response.data.bpi.USD.rate + " USD* as of " + response.data.time.updated;
-                    next();
-                })
-        case "LOVE_BACK":
-            req.slackPost = `I love you too, <@${req.body.user_id}>`;
-            return next();
-        default:
-            return next();
     }
 }
 

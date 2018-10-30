@@ -1,9 +1,11 @@
-var moment = require('moment');
+const moment = require('moment');
+const { specialResponses } = require('./specialResponses.js');
+
 // Custom responses for my semi-reincarnation of slacky.
 // These will be triggered as "/slacky [trigger]"
 // Please keep all triggers lowercase. Responses can be formatted as any string.
 
-var custom_messages = [
+const custom_messages = [
    {
         triggers: ["ping"],
         responses: ["pong", ":ping-pong:"]
@@ -108,7 +110,7 @@ var custom_messages = [
         responses: [moment().utcOffset(-8).format("dddd, MMMM Do, YYYY")]
     }, {
         triggers: ["btc", "bitcoin"],
-        responses: ["BITCOIN_LOOKUP"]
+        responses: [specialResponses.BITCOIN_LOOKUP]
     }, {
         triggers: ["oprah"],
         responses: ["You get to know who you really are in a crisis", "Your true passion should feel like breathing; its that natural", "I believe that every single event in life happens in an opportunity to choose love over fear.", "When you undervalue what you do, the world will undervalue who you are.","Think like a queen. A queen if not afraid to fail. Failure is another stepping stone to greatness", "Turn your wounds into wisdom.", "You can have it all. Just not all at once.", "Be thankful for what you have; you'll end up having more. If you concentrate on what you don't have, you will never, ever have enough", "If a man wants you, nothing can keep him away. If he doesn't want you, nothing can make him stay.", "True forgiveness is when you can say, \"Thank you for that experience.\"" ]
@@ -117,13 +119,13 @@ var custom_messages = [
         responses: [":tiger::wave::cat-massage: ", ":pouting_cat::wave::cat-massage: ", "https://www.youtube.com/watch?v=TnZhi5gaX8g", "Champion! It’s time for cat massage :cat-massage:", "Petting is just randomly petting", "Most people will go mid back. AH-!", "If we understood fluent meow, our cats would tell us that petting is passé because your cat wants a massage", "No oils or lotions are needed", "Cat massage even helps some cats tolerate a bath, but I don’t think we’ll be showing that", "Hey Champ, now that we’ve told our friends about the benefits of cat massage, let’s show them how to do it", "If you’re right handed, use your right hand; left-hander’s use left; OR if you’re right handed, try using your left and vice versa :cat-massage:", "Good for you, use two hands to double your pleasure and double your fun", "ACCEPT ME", "Relax, you have the best teacher available: your cat", "Remember the old Simon and Garfunkel song? ':musical_note:Slow down, you’re moving too fast:music:' ", "That says a lot about life and about cat massage :cat-massage:", "What may seem excruciatingly slow to us is so appropriate to your feline", "We touch all the time, so why not be the best at it?", "Like the touch of a fairy", "Caution! If your kitty doesn’t like her fur disturbed, she may tell you to shuffle out of the door.", "Caution! Either they like this or they don’t", ":warning: Caution! This is tender territory :warning:", ":warning: A whisker watch alert is in effect here! :warning:", "Remember, :rotating_light::warning: a MAJOR whisker watch alert is in effect here! :rotating_light::warning:", "Is your cat a talker? If so, cat massage will bring out his best mega-meow moments", "We call it 'power purring'! ", "Drooling! In this case, a drooler is not a person specialized in rings and watches. It’s a cat who’s so wrapped up and enjoying a massage that she forgets to swallow and then she drools", "Remember, you can’t fool drool!", "MMMmmmmmmm:cat-massage:", "The front of your cat is a veritable treasure chest of fun", "You don’t need a swimming pool for this breast stroking", "This is especially good for macho cats", "These are the prominent chest muscles seen on proud bodybuilders", "This is a really groovy move", "Belly-rama!", "Right out to the chinny chin chin", "A cat’s tail is its badge of honor, so let’s not neglect it", "Simply start from the base of the rump, rubbing your way out and follow it to its natural conclusion", ":musical_note:Who is the best cat in the United States:music: ??? It’s you Champ-er damper, it’s you!!", "BORING!", "Now: when to cat massage??? … Whenever!","But it’s only a matter of time before your cat starts wanting cat massage, then starts demanding cat massage, cat massage, cat massage, cat massage",]
     }, {
         triggers: ["i love you"],
-        responses: ["LOVE_BACK"]
+        responses: [specialResponses.LOVE_BACK]
     }, {
         triggers: ["issa dietrich"],
         responses: [":dietrich:", ":yee-haw-dietrich:"]
     }, {
-        triggers: [],
-        responses: []
+        triggers: ["circle_text"],
+        responses: [specialResponses.CIRCLE_TEXT]
     }, {
         triggers: [],
         responses: []
