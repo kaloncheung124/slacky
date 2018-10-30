@@ -68,7 +68,7 @@ function buildResponse(req, res, next) {
         req.slackPost = validResponses[Math.floor(Math.random()*validResponses.length)];
     }
     
-    if (Object.values(specialResponses)includes(req.slackPost)) {
+    if (Object.values(specialResponses).includes(req.slackPost)) {
         return respondSpecially(req, reqMessage, next);
     } else {
         next();
