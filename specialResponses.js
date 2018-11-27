@@ -58,8 +58,15 @@ const letterMap = {
     x: "xcircle",
     y: "y",
     z: "ztrain",
-    "?": "question"
-}
+    "?": "question",
+    "1": "1train",
+    "2": "2train",
+    "3": "3train",
+    "4": "4train",
+    "5": "5train",
+    "6": "6train",
+    "9": "9train"
+};
 
 function textIntoCircles(str) {
     let output = "";
