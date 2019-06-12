@@ -5,7 +5,7 @@ const customResponses = require('./responses');
 const { specialResponses, respondSpecially } = require('./specialResponses');
 
 const PORT = process.env.PORT || 3000;
-const app_channel_ids = ['G5U4QADM5', 'D5ZRKBF0U', 'D1B41UMTP', 'D7XBVJ11S'];
+const app_channel_ids = ['G5U4QADM5', 'D5ZRKBF0U', 'D1B41UMTP', 'D7XBVJ11S', 'GE7FLJ0RL'];
 const app_command = '/slacky';
 const app_token = 'Laxhh7SiOEDj2UK049nShPLK';
 
