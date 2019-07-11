@@ -38,7 +38,12 @@ const custom_messages = [
     responses: [":justin:", ":albert:", ":jake-b:", ":jake-m:", ":kevin-z:", ":spinning-maurice:", ":john-b:", ":jordan-pina:", ":michelle:", ":kalon:", ":the-real-udaya:", ":gabe-l:", ":alex:", ":anton:", ":or:", ":mitch:", ":jarrod:", ":trash-cannor:"]
   }, {
     triggers: ["is", "are", "does", "do", "will", "should", "could", "am", "would", "did", "were", "can"],
-    responses: [":no_good: :no_entry_sign: no :no_good: :no_entry_sign:", ":the_horns::dancing-party: yes:the_horns::dancing-party:"]
+    responses: [
+      ":no_good: :no_entry_sign: no :no_good: :no_entry_sign:",
+      ":the_horns::dancing-party: yes:the_horns::dancing-party:",
+      ":turning-maurice: non :turning-maurice:",
+      ":bouncing-around-maurice: oui oui :bouncing-around-maurice:"
+    ]
   }, {
     triggers: ["can you kindly", "will you kindly", "could you kindly", "would you kindly", "please"],
     responses: [":the_horns::dancing-party: yes:the_horns::dancing-party:"]
