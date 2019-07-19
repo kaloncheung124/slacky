@@ -135,8 +135,17 @@ const custom_messages = [
     triggers: ["circle_text"],
     responses: [specialResponses.CIRCLE_TEXT]
   }, {
+    triggers: ["_text"],
+    responses: [specialResponses.TEXT]
+  }, {
     triggers: ["is it snack time", "snack time"],
     responses: ["It is snack time my dudes."]
+  }, {
+    triggers: [],
+    responses: []
+  }, {
+    triggers: [],
+    responses: []
   }, {
     triggers: [],
     responses: []

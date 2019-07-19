@@ -4,7 +4,8 @@ const specialResponses = {
     BITCOIN_LOOKUP: "SP_BITCOIN_LOOKUP",
     LOVE_BACK: "SP_LOVE_BACK",
     CIRCLE_TEXT: "SP_CIRCLE_TEXT",
-}
+    TEXT: "SP_TEXT",
+};
 
 module.exports.specialResponses = specialResponses;
 
@@ -16,7 +17,7 @@ module.exports.respondSpecially = function(req, reqMessage, next) {
                 .then(function(response) {
                     req.slackPost = "*1 BTC = " + response.data.bpi.USD.rate + " USD* as of " + response.data.time.updated;
                     next();
-                })
+                });
         case specialResponses.LOVE_BACK:
             req.slackPost = `I love you too, <@${req.body.user_id}>`;
             return next();
@@ -24,11 +25,36 @@ module.exports.respondSpecially = function(req, reqMessage, next) {
         case specialResponses.CIRCLE_TEXT:
             // ASSUMES the text starts after the first word
             let textToCirclify = reqMessage.substr(reqMessage.indexOf(" ") + 1);
-            req.slackPost = textIntoCircles(textToCirclify)
+            req.slackPost = textIntoCircles(textToCirclify);
             return next();
+
+        case specialResponses.TEXT:
+          // ASSUMES the text starts after the first word
+          let textToTranslate = reqMessage.substr(reqMessage.indexOf(" ") + 1);
+          req.slackPost = textToEmoji(textToTranslate);
+          return next();
         default:
             return next();
     }
+};
+
+const englishTextRegex = /^[a-z]$/i;
+function getTextIconString(char) {
+    // If it's a space, double it to space out the big words.
+    if (char === " ")
+        return "  ";
+
+    let validChar = englishTextRegex.test(char);
+    return validChar ? `:${char.toLowerCase()}-lowercase:` : char;
+}
+
+function textToEmoji(text) {
+    let output = "";
+    for (let char of text) {
+        output += getTextIconString(char);
+    }
+
+    return output;
 }
 
 const letterMap = {
@@ -76,7 +102,7 @@ function textIntoCircles(str) {
     for (let char of str) {
         let iconName = letterMap[char.toLowerCase()];
         let iconText = iconName ? `:${iconName}:` : char;
-        output += char === " " ? "  " : (iconName ? `:${iconName}:` : char);
+        output += char === " " ? "  " : iconText;
     }
 
     return output;
