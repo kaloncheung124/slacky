@@ -70,7 +70,7 @@ const custom_messages = [
     responses: ["lmao"]
   }, {
     triggers: ["tell me something sad"],
-    responses: [":albert:"]
+    responses: ["Sprint celebration has been postponed to next tuesday", "moved Sprint celebration to thursday afternoon!", "due to today's production issues, sprint celebration is postponed to tuesday."]
   }, {
     triggers: ["tell me something funny"],
     responses: ["ALRT #330696 on NR Vision Frontend: CRITICAL: 'author-1d' on 'vision-processor420.gus.taboolasyndication.com': Reply 114:Ack, 116:Resolv, 118:Escal8 (<@U09318SQL>)", "I guess he was just a bad conductor", '"Greed will imprison us all." -Albsy', "Have I told you the story of @justin.h apartment shopping?", "He who fights with monsters might take care lest he thereby become a monster. And if you gaze for long into an abyss, the abyss gazes also into you.", "You have your way. I have my way. As for the right way, the correct way, and the only way, it does not exist.", "One must still have chaos in oneself to be able to give birth to a dancing star.", "That which does not kill us makes us stronger.", "So there’s this kid named Billy. And Billy’s a normal kid, right? Except he loves trolleys…"]
