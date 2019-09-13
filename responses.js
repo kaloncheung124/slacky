@@ -144,8 +144,8 @@ const custom_messages = [
     triggers: ["coin toss"],
     responses: ["heads", "tails"]
   }, {
-    triggers: [],
-    responses: []
+    triggers: ["hi"],
+    responses: ["hello there!", "hi", "hey"]
   }, {
     triggers: [],
     responses: []
