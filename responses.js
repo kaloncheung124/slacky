@@ -141,8 +141,8 @@ const custom_messages = [
     triggers: ["is it snack time", "snack time"],
     responses: ["It is snack time my dudes."]
   }, {
-    triggers: [],
-    responses: []
+    triggers: ["coin toss"],
+    responses: ["heads", "tails"]
   }, {
     triggers: [],
     responses: []
