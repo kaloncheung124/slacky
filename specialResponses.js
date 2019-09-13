@@ -36,7 +36,7 @@ module.exports.respondSpecially = function(req, reqMessage, next) {
       return next();
     case specialResponses.WHAT_IS:
       // Assumes the message starts after
-      let textToSearch = reqMessage.toLowerCase();
+      let textToSearch = encodeURIComponent(reqMessage.toLowerCase());
       req.slackPost = `https://www.google.com/search?q=${textToSearch}`;
       return next();
     default:
