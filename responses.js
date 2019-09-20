@@ -35,7 +35,7 @@ const custom_messages = [
     responses: ["Ya like jazz?", "According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible."]
   }, {
     triggers: ["who"],
-    responses: [":justin:", ":albert:", ":jake-b:", ":jake-m:", ":kevin-z:", ":spinning-maurice:", ":john-b:", ":jordan-pina:", ":michelle:", ":kalon:", ":the-real-udaya:", ":gabe-l:", ":alex:", ":anton:", ":or:", ":mitch:", ":jarrod:", ":trash-cannor:"]
+    responses: [":justin:", ":albert:", ":jake-b:", ":jake-m:", ":kevin-z:", ":spinning-maurice:", ":john-b:", ":jordan-pina:", ":michelle:", ":kalon:", ":the-real-udaya:", ":gabe-l:", ":alex:", ":anton:", ":or:", ":mitch:", ":jarrod:", ":trash-cannor:", ":lawrence-l:", ":godwin:"]
   }, {
     triggers: ["is", "are", "does", "do", "will", "should", "could", "am", "would", "did", "were", "can"],
     responses: [
