@@ -5,7 +5,14 @@ const customResponses = require('./responses');
 const { specialResponses, respondSpecially } = require('./specialResponses');
 
 const PORT = process.env.PORT || 3000;
-const app_channel_ids = ['G5U4QADM5', 'D5ZRKBF0U', 'D1B41UMTP', 'D7XBVJ11S', 'GE7FLJ0RL'];
+const channelWhitelist = new Set([
+  'G5U4QADM5',
+  'D5ZRKBF0U',
+  'D1B41UMTP',
+  'D7XBVJ11S',
+  'GE7FLJ0RL',
+  'GLT3BPPE2',
+]);
 const app_command = '/slacky';
 const app_token = 'Laxhh7SiOEDj2UK049nShPLK';
 
@@ -26,7 +33,7 @@ function buildResponse(req, res, next) {
   }
 
   // If it's not in the correct channel, don't reply
-  if (app_channel_ids.indexOf(body.channel_id) === -1) {
+  if (!channelWhitelist.has(body.channel_id)) {
     next("Slacky doesn't work here.");
     return;
   }
