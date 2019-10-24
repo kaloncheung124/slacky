@@ -84,7 +84,7 @@ function generatePoll(textAfterFirstWord, req, next) {
     return next("Yeah sorry I'm not sure which emojis to use after :keycap_ten:")
   }
 
-  const title = `*${arguments.shift()}`;
+  const title = `*${arguments.shift()}*`;
   const processedArguments = arguments.map((option, index) => {
     const optionNumber = index + 1;
     const emojiName = numberMap[optionNumber];
@@ -94,7 +94,7 @@ function generatePoll(textAfterFirstWord, req, next) {
   });
 
   const lineArray = [title, ...processedArguments];
-  req.slackPost = lineArray.join('\n');
+  req.slackPost = lineArray.join('\n\n');
   return next();
 }
 
