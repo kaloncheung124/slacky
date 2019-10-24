@@ -1,4 +1,5 @@
 const Axios = require('axios');
+const splitString = require("split-string");
 
 const specialResponses = {
   BITCOIN_LOOKUP: "SP_BITCOIN_LOOKUP",
@@ -6,12 +7,18 @@ const specialResponses = {
   CIRCLE_TEXT: "SP_CIRCLE_TEXT",
   TEXT: "SP_TEXT",
   WHAT_IS: "WHAT_IS",
+  POLL: "POLL",
 };
 
 module.exports.specialResponses = specialResponses;
 
 // Must call next!
 module.exports.respondSpecially = function(req, reqMessage, next) {
+  let firstSpaceIndex = reqMessage.indexOf(" ");
+  let textAfterFirstWord = firstSpaceIndex === -1 ?
+    '' :
+    reqMessage.substr(firstSpaceIndex + 1);
+
   switch (req.slackPost) {
     case specialResponses.BITCOIN_LOOKUP:
       return Axios.get("https://api.coindesk.com/v1/bpi/currentprice.json")
@@ -25,20 +32,20 @@ module.exports.respondSpecially = function(req, reqMessage, next) {
 
     case specialResponses.CIRCLE_TEXT:
       // ASSUMES the text starts after the first word
-      let textToCirclify = reqMessage.substr(reqMessage.indexOf(" ") + 1);
-      req.slackPost = textIntoCircles(textToCirclify);
+      req.slackPost = textIntoCircles(textAfterFirstWord);
       return next();
 
     case specialResponses.TEXT:
       // ASSUMES the text starts after the first word
-      let textToTranslate = reqMessage.substr(reqMessage.indexOf(" ") + 1);
-      req.slackPost = textToEmoji(textToTranslate);
+      req.slackPost = textToEmoji(textAfterFirstWord);
       return next();
     case specialResponses.WHAT_IS:
       // Assumes the message starts after
       let textToSearch = encodeURIComponent(reqMessage.toLowerCase());
       req.slackPost = `https://www.google.com/search?q=${textToSearch}`;
       return next();
+    case specialResponses.POLL:
+      return generatePoll(textAfterFirstWord, req, next);
     default:
       return next();
   }
@@ -62,6 +69,47 @@ function textToEmoji(text) {
 
   return output;
 }
+
+function splitArguments(string) {
+  const keep = a => a !== '"' && a !== "'";
+  const options = {separator: ' ', quotes: ['"', '\''], keep};
+  return splitString(string, options);
+}
+
+function generatePoll(textAfterFirstWord, req, next) {
+  let arguments = splitArguments(textAfterFirstWord);
+  if (arguments.length <= 1) {
+    return next("Please include a title and at least one option")
+  } else if (arguments.length > 11) {
+    return next("Yeah sorry I'm not sure which emojis to use after :keycap_ten:")
+  }
+
+  const title = `*${arguments.shift()}`;
+  const processedArguments = arguments.map((option, index) => {
+    const optionNumber = index + 1;
+    const emojiName = numberMap[optionNumber];
+    const emoji = emojiName ? `:${emojiName}:` : `*${optionNumber}*:`;
+
+    return `${emoji} ${option}`;
+  });
+
+  const lineArray = [title, ...processedArguments];
+  req.slackPost = lineArray.join('\n');
+  return next();
+}
+
+const numberMap = {
+  1: "one",
+  2: "two",
+  3: "three",
+  4: "four",
+  5: "five",
+  6: "six",
+  7: "seven",
+  8: "eight",
+  9: "nine",
+  10: "keycap_ten"
+};
 
 const letterMap = {
   a: "atrain",

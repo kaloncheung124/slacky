@@ -152,7 +152,10 @@ const custom_messages = [
   }, {
     triggers: ["what"],
     responses: [specialResponses.WHAT_IS]
-  },
+  }, {
+    triggers: ["poll"],
+    responses: [specialResponses.POLL]
+  }
 ];
 
 module.exports = custom_messages;
