@@ -42,7 +42,9 @@ const custom_messages = [
       ":no_good: :no_entry_sign: no :no_good: :no_entry_sign:",
       ":the_horns::dancing-party: yes:the_horns::dancing-party:",
       ":turning-maurice: non :turning-maurice:",
-      ":bouncing-around-maurice: oui oui :bouncing-around-maurice:"
+      ":bouncing-around-maurice: oui oui :bouncing-around-maurice:",
+      ":wandering-albert: ah yes :wandering-albert:",
+      ":ticking-albert: noot :ticking-albert:",
     ]
   }, {
     triggers: ["can you kindly", "will you kindly", "could you kindly", "would you kindly", "please"],
