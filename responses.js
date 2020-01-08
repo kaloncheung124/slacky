@@ -155,7 +155,10 @@ const custom_messages = [
   }, {
     triggers: ["poll"],
     responses: [specialResponses.POLL]
-  }
+  }, {
+    triggers: ["albert", ":albert:"],
+    responses: [":wandering-albert: ah yes :wandering-albert:", ":wandering-albert: I agree :wandering-albert:", ":really-makes-you-think-albert: I see :albert-think-you-makes-really:", ":bouncing-around-albert: excellent :bouncing-around-albert:"]
+  },
 ];
 
 module.exports = custom_messages;
