@@ -156,7 +156,7 @@ const custom_messages = [
     triggers: ["poll"],
     responses: [specialResponses.POLL]
   }, {
-    triggers: ["albert", ":albert:"],
+    triggers: ["albert", ":albert:", "albsy"],
     responses: [":wandering-albert: ah yes :wandering-albert:", ":wandering-albert: I agree :wandering-albert:", ":really-makes-you-think-albert: I see :albert-think-you-makes-really:", ":bouncing-around-albert: excellent :bouncing-around-albert:"]
   },
 ];
