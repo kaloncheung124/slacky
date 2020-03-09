@@ -146,8 +146,11 @@ const custom_messages = [
     triggers: ["coin toss"],
     responses: ["heads", "tails"]
   }, {
-    triggers: ["hi"],
+    triggers: ["hi", "hello", "hey"],
     responses: ["hello there!", "hi", "hey"]
+  }, {
+    triggers: ["hello there"],
+    responses: ["General Kenobi"]
   }, {
     triggers: ["what is the meaning of life", "meaning of life"],
     responses: ["According to Wikipedia: The meaning of life, or the answer to the question: \"What is the meaning of life?\", pertains to the significance of living or existence in general. Many other related questions include: \"Why are we here?\", \"What is life all about?\", or \"What is the purpose of existence?\" There have been a large number of proposed answers to these questions from many different cultural and ideological backgrounds. The search for life's meaning has produced much philosophical, scientific, theological, and metaphysical speculation throughout history. Different people and cultures believe different things for the answer to this question."]
