@@ -35,19 +35,20 @@ const custom_messages = [
     responses: ["Ya like jazz?", "According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible."]
   }, {
     triggers: ["who"],
-    responses: [":albert:"]
-    // responses: [":justin:", ":albert:", ":jake-b:", ":jake-m:", ":kevin-z:", ":spinning-maurice:", ":john-b:", ":jordan-pina:", ":michelle:", ":kalon:", ":the-real-udaya:", ":gabe-l:", ":alex:", ":anton:", ":or:", ":mitch:", ":jarrod:", ":trash-cannor:", ":lawrence-l:", ":godwin:", ":davis-o:"]
+    responses: [":justin:", ":albert:", ":jake-b:", ":jake-m:", ":kevin-z:", ":spinning-maurice:", ":john-b:", ":jordan-pina:", ":michelle:", ":kalon:", ":the-real-udaya:", ":gabe-l:", ":alex:", ":anton:", ":or:", ":mitch:", ":jarrod:", ":trash-cannor:", ":lawrence-l:", ":godwin:", ":davis-o:"]
   }, {
     triggers: ["is", "are", "does", "do", "will", "should", "could", "am", "would", "did", "were", "can"],
-    responses: [":no_good: :no_entry_sign: no :no_good: :no_entry_sign:", ":turning-maurice: non :turning-maurice:", ":ticking-albert: noot :ticking-albert:"],
-    // responses: [
-    //   ":no_good: :no_entry_sign: no :no_good: :no_entry_sign:",
-    //   ":the_horns::dancing-party: yes:the_horns::dancing-party:",
-    //   ":turning-maurice: non :turning-maurice:",
-    //   ":bouncing-around-maurice: oui oui :bouncing-around-maurice:",
-    //   ":wandering-albert: ah yes :wandering-albert:",
-    //   ":ticking-albert: noot :ticking-albert:",
-    // ]
+    responses: [
+      ":no_good: :no_entry_sign: no :no_good: :no_entry_sign:",
+      ":the_horns::dancing-party: yes:the_horns::dancing-party:",
+      ":turning-maurice: non :turning-maurice:",
+      ":bouncing-around-maurice: oui oui :bouncing-around-maurice:",
+      ":wandering-albert: ah yes :wandering-albert:",
+      ":ticking-albert: noot :ticking-albert:",
+    ]
+  }, {
+    triggers: ["how many"],
+    responses: [ ...Array(1000).keys() ]
   }, {
     triggers: ["can you kindly", "will you kindly", "could you kindly", "would you kindly", "please"],
     responses: [":the_horns::dancing-party: yes:the_horns::dancing-party:"]
