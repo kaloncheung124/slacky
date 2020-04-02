@@ -48,7 +48,7 @@ const custom_messages = [
     ]
   }, {
     triggers: ["how many"],
-    responses: [ ...Array(1000).keys() ]
+    responses: [specialResponses.HOW_MANY]
   }, {
     triggers: ["can you kindly", "will you kindly", "could you kindly", "would you kindly", "please"],
     responses: [":the_horns::dancing-party: yes:the_horns::dancing-party:"]

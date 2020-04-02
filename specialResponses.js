@@ -6,8 +6,9 @@ const specialResponses = {
   LOVE_BACK: "SP_LOVE_BACK",
   CIRCLE_TEXT: "SP_CIRCLE_TEXT",
   TEXT: "SP_TEXT",
-  WHAT_IS: "WHAT_IS",
-  POLL: "POLL",
+  WHAT_IS: "SP_WHAT_IS",
+  POLL: "SP_POLL",
+  HOW_MANY: "SP_HOW_MANY"
 };
 
 module.exports.specialResponses = specialResponses;
@@ -46,6 +47,9 @@ module.exports.respondSpecially = function(req, reqMessage, next) {
       return next();
     case specialResponses.POLL:
       return generatePoll(textAfterFirstWord, req, next);
+    case specialResponses.HOW_MANY:
+      req.slackPost = Math.round(Math.random() * Math.random() * Math.random() * Math.random() * Math.random() * 100000);
+      return next();
     default:
       return next();
   }
