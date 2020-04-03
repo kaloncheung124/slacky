@@ -47,7 +47,7 @@ const custom_messages = [
       ":ticking-albert: noot :ticking-albert:",
     ]
   }, {
-    triggers: ["how many"],
+    triggers: ["how many", "how much"],
     responses: [specialResponses.HOW_MANY]
   }, {
     triggers: ["can you kindly", "will you kindly", "could you kindly", "would you kindly", "please"],
